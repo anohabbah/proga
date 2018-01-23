@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import anoh.kobenan.tp1.*;
+import anoh.kobenan.tp2.*;
 
 public class MotsCroisesTest {
     private MotsCroises mc;
@@ -26,7 +26,7 @@ public class MotsCroisesTest {
         vertical = new String[hauteur][largeur];
 
         // Mise en place des cases noires
-        // Premi�re �tape : "mise � blanc" de toutes les cases
+        // Premiére étape : "mise é blanc" de toutes les cases
         for (int lig = 1; lig <= mc.getHauteur(); lig++) {
             for (int col = 1; col <= mc.getLargeur(); col++) {
                 noire[lig - 1][col - 1] = false;
@@ -34,8 +34,8 @@ public class MotsCroisesTest {
             }
         }
 
-        // Deuxi�me �tape : noircir toutes les cases d'une diagonale (i,i)
-        // except�e pour (2,2)
+        // Deuxiéme étape : noircir toutes les cases d'une diagonale (i,i)
+        // exceptée pour (2,2)
         for (int i = 1; i <= mc.getHauteur(); i++) {
             if (i != 2) {
                 noire[i - 1][i - 1] = true;
@@ -43,7 +43,7 @@ public class MotsCroisesTest {
             }
         }
 
-        // Mise en place des solutions, des propositions et des d�finitions
+        // Mise en place des solutions, des propositions et des définitions
         char lettre = 'A';
         for (int lig = 1; lig <= mc.getHauteur(); lig++) {
             for (int col = 1; col <= mc.getLargeur(); col++) {
@@ -67,7 +67,7 @@ public class MotsCroisesTest {
             }
         }
 
-        // Cr�ation d'une 2�me instance pour tester d'�ventuels effets de bord
+        // Création d'une 2éme instance pour tester d'éventuels effets de bord
         MotsCroises mc2 = new MotsCroises(2, 4);
         for (int lig = 1; lig <= mc2.getHauteur(); lig++) {
             for (int col = 1; col <= mc2.getLargeur(); col++) {
@@ -83,7 +83,7 @@ public class MotsCroisesTest {
     }
 
     public void afficherReference(Object[][] tab, String libelle) {
-        System.out.println("R�f�rence " + libelle + " :");
+        System.out.println("Référence " + libelle + " :");
         for (int lig = 1; lig <= hauteur; lig++) {
             for (int col = 1; col <= largeur; col++) {
                 System.out.print("" + tab[lig - 1][col - 1] + "-");
@@ -98,10 +98,10 @@ public class MotsCroisesTest {
         for (int lig = 1; lig <= mc.getHauteur(); lig++)
             for (int col = 1; col <= mc.getLargeur(); col++) {
                 if (noire[lig - 1][col - 1]) {
-                    assertTrue("La case (" + lig + "," + col + ") doit �tre noire",
+                    assertTrue("La case (" + lig + "," + col + ") doit étre noire",
                             mc.estCaseNoire(lig, col));
                 } else {
-                    assertFalse("La case (" + lig + "," + col + ") ne doit pas �tre noire",
+                    assertFalse("La case (" + lig + "," + col + ") ne doit pas étre noire",
                             mc.estCaseNoire(lig, col));
                 }
             }
@@ -119,12 +119,12 @@ public class MotsCroisesTest {
 
     @Test
     public void testHorizontal() {
-        testGrille(horizontal, "d�finition horizontale");
+        testGrille(horizontal, "définition horizontale");
     }
 
     @Test
     public void testVertical() {
-        testGrille(vertical, "d�finition verticale");
+        testGrille(vertical, "définition verticale");
     }
 
     private void testGrille(Object[][] grille, String libelle) {
@@ -141,10 +141,10 @@ public class MotsCroisesTest {
                         case "proposition":
                             observe = mc.getProposition(lig, col);
                             break;
-                        case "d�finition horizontale":
+                        case "définition horizontale":
                             observe = mc.getDefinition(lig, col, true);
                             break;
-                        case "d�finition verticale":
+                        case "définition verticale":
                             observe = mc.getDefinition(lig, col, false);
                             break;
                     }

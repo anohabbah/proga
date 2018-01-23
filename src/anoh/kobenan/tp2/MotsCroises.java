@@ -1,14 +1,14 @@
-package anoh.kobenan.tp1;
+package anoh.kobenan.tp2;
 
 /**
  * Created by 18018881 on 18/01/2018.
  */
 public class MotsCroises {
 
-    private Grille solution;
-    private Grille proposition;
-    private Grille horizontal;
-    private Grille vertical;
+    private Grille<Character> solution;
+    private Grille<Character> proposition;
+    private Grille<String> horizontal;
+    private Grille<String> vertical;
 
     private int hauteur;
     private int largeur;
@@ -17,10 +17,10 @@ public class MotsCroises {
         this.hauteur = hauteur;
         this.largeur = largeur;
 
-        this.proposition = new Grille(hauteur, largeur);
-        this.horizontal = new Grille(hauteur, largeur);
-        this.solution = new Grille(hauteur, largeur);
-        this.vertical = new Grille(hauteur, largeur);
+        this.proposition = new Grille<>(hauteur, largeur);
+        this.horizontal = new Grille<>(hauteur, largeur);
+        this.solution = new Grille<>(hauteur, largeur);
+        this.vertical = new Grille<>(hauteur, largeur);
     }
 
     public int getLargeur() {
@@ -37,39 +37,39 @@ public class MotsCroises {
 
     public void setCaseNoire(int lig, int col, boolean noire) {
         if (noire) {
-            this.solution.setCellule(lig, col, "*");
+            this.solution.setCellule(lig, col, '*');
         } else {
-            this.solution.setCellule(lig, col, " ");
+            this.solution.setCellule(lig, col, ' ');
         }
     }
 
     public boolean estCaseNoire(int lig, int col) {
         assert this.coordCorrectes(lig, col) : "Mauvaises coordonnées.";
-        return this.solution.getCellule(lig, col) == "*";
+        return this.solution.getCellule(lig, col) == '*';
     }
 
     public char getSolution(int lig, int col) {
         assert this.coordCorrectes(lig, col) && !this.estCaseNoire(lig, col);
 
-        return this.solution.getCellule(lig, col).charAt(0);
+        return this.solution.getCellule(lig, col);
     }
 
     public void setSolution(int lig, int col, char sol) {
         assert this.coordCorrectes(lig, col) && !this.estCaseNoire(lig, col);
 
-        this.solution.setCellule(lig, col, String.valueOf(sol));
+        this.solution.setCellule(lig, col, sol);
     }
 
     public char getProposition(int lig, int col) {
         assert this.coordCorrectes(lig, col) && !this.estCaseNoire(lig, col);
 
-        return this.proposition.getCellule(lig, col).charAt(0);
+        return this.proposition.getCellule(lig, col);
     }
 
     public void setProposition(int lig, int col, char prop) {
         assert this.coordCorrectes(lig, col) && !this.estCaseNoire(lig, col);
 
-        this.proposition.setCellule(lig, col, String.valueOf(prop));
+        this.proposition.setCellule(lig, col, prop);
     }
 
     public String getDefinition(int lig, int col, boolean horiz) {
